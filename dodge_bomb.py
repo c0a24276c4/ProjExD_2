@@ -36,7 +36,7 @@ def gameover(screen: pg.Surface) -> None:
     txt = font.render("Game Over", True, (255, 255, 255))
     screen.blit(txt, [425, 275])
     bg2_img = pg.transform.rotozoom(pg.image.load("fig/8.png"), 0, 0.9)
-    screen.blit(bg2_img, [375,275])
+    screen.blit(bg2_img, [375, 275])
     bg3_img = pg.transform.rotozoom(pg.image.load("fig/8.png"), 0, 0.9)
     screen.blit(bg3_img, [740,275])
     pg.display.update()
@@ -47,7 +47,6 @@ def init_bb_items() -> tuple[list[pg.Surface],list[int]]:
     for r in range(1, 11):
         bb_img = pg.Surface((20*r, 20*r))
         pg.draw.circle(bb_img,(255, 0, 0), (10*r, 10*r), 10*r) #追加機能途中
-
     
 
 def main():
