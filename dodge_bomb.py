@@ -39,9 +39,14 @@ def gameover(screen: pg.Surface) -> None:
     screen.blit(bg2_img, [375,275])
     bg3_img = pg.transform.rotozoom(pg.image.load("fig/8.png"), 0, 0.9)
     screen.blit(bg3_img, [740,275])
-
     pg.display.update()
     time.sleep(5)
+
+def init_bb_items() -> tuple[list[pg.Surface],list[int]]:
+    bb_accs = [a for a in range(1, 11)]
+    for r in range(1, 11):
+        bb_img = pg.Surface((20*r, 20*r))
+        pg.draw.circle(bb_img,(255, 0, 0), (10*r, 10*r), 10*r) #追加機能途中
 
     
 
@@ -88,6 +93,11 @@ def main():
         if check_bound(kk_rct) != (True, True):
             kk_rct.move_ip(-sum_mv(0), -sum_mv(0))
         screen.blit(kk_img, kk_rct)
+
+        bb_imgs, bb_accs = init_bb_items() 
+        avx = vx*bb_accs[min(tmr//500,9)]
+        bb_img = bb_imgs[min(tmr//500, 9)]
+
         bb_rct.move_ip(vx, vy)
         yoko, tate = check_bound(bb_rct)
         if not yoko:
